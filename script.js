@@ -1,4 +1,3 @@
-//your code here
 (function () {
   const nameInput  = document.getElementById('item-name-input');
   const priceInput = document.getElementById('item-price-input');
@@ -31,7 +30,7 @@
 
       const tdPrice = document.createElement('td');
       tdPrice.setAttribute('data-ns-test', 'item-price');
-      tdPrice.textContent = item.price.toFixed(2);
+      tdPrice.textContent = Number.isInteger(item.price) ? item.price : item.price.toFixed(2);
 
       tr.appendChild(tdNum);
       tr.appendChild(tdName);
@@ -40,7 +39,7 @@
     });
 
     const total = items.reduce(function (sum, item) { return sum + item.price; }, 0);
-    grandTotal.textContent = total.toFixed(2);
+    grandTotal.textContent = Number.isInteger(total) ? total : total.toFixed(2);
   }
 
   function addItem() {
