@@ -1,2 +1,203 @@
 
 /* Your CSS Code here. */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #fdf6ec;
+  --surface: #ffffff;
+  --ink: #1a1208;
+  --muted: #7a6a55;
+  --accent: #c8501a;
+  --accent-light: #f7ddd1;
+  --green: #2e7d52;
+  --border: #e8ddd0;
+  --shadow: 0 4px 24px rgba(26,18,8,0.09);
+  --radius: 14px;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem 1rem 4rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 560px;
+  animation: fadeUp .45s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Header ── */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.header-icon {
+  font-size: 2.6rem;
+  margin-bottom: .4rem;
+  filter: drop-shadow(0 2px 6px rgba(200,80,26,.25));
+}
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  letter-spacing: -.5px;
+  color: var(--ink);
+}
+.subtitle {
+  margin-top: .25rem;
+  color: var(--muted);
+  font-size: .9rem;
+  letter-spacing: .5px;
+}
+
+/* ── Input row ── */
+.input-row {
+  display: flex;
+  gap: .6rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: .75rem .85rem;
+  box-shadow: var(--shadow);
+}
+
+input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .95rem;
+  color: var(--ink);
+  padding: .35rem .4rem;
+  min-width: 0;
+}
+input::placeholder { color: #b5a898; }
+input[type="number"] { max-width: 120px; }
+/* hide spinners */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number] { -moz-appearance: textfield; }
+
+/* divider between inputs */
+.input-row input:first-child {
+  border-right: 1.5px solid var(--border);
+  padding-right: .85rem;
+}
+input[type="number"] {
+  padding-left: .75rem;
+}
+
+button#add-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  padding: .4rem 1.25rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: .3px;
+  transition: background .18s, transform .12s;
+  white-space: nowrap;
+}
+button#add-btn:hover  { background: #a83e12; }
+button#add-btn:active { transform: scale(.96); }
+
+/* ── Error ── */
+.error-msg {
+  min-height: 1.3rem;
+  font-size: .82rem;
+  color: var(--accent);
+  margin: .45rem .2rem .1rem;
+  font-weight: 500;
+  transition: opacity .2s;
+}
+
+/* ── Table ── */
+.table-wrapper {
+  margin-top: 1rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead tr {
+  background: var(--ink);
+}
+thead th {
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: .75rem 1.1rem;
+  text-align: left;
+}
+thead th:last-child { text-align: right; }
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  animation: rowIn .28s ease both;
+}
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #fdf0e8; }
+
+tbody td {
+  padding: .7rem 1.1rem;
+  font-size: .92rem;
+  vertical-align: middle;
+}
+tbody td:first-child {
+  color: var(--muted);
+  font-size: .8rem;
+  font-weight: 600;
+  width: 2.5rem;
+}
+tbody td:last-child { text-align: right; font-weight: 500; }
+
+/* ── Footer / Grand Total ── */
+tfoot tr {
+  background: var(--accent-light);
+  border-top: 2px solid var(--accent);
+}
+.total-label {
+  padding: .85rem 1.1rem;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.total-value {
+  padding: .85rem 1.1rem;
+  text-align: right;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: var(--green);
+}
+.total-value span::before { content: '₹'; font-size: 1rem; vertical-align: 2px; margin-right: 1px; }

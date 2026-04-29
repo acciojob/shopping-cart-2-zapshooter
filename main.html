@@ -1,16 +1,45 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-      <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <div class="container">
+    <header>
+      <div class="header-icon">🛒</div>
+      <h1>Shopping List</h1>
+      <p class="subtitle">Track your items & total</p>
+    </header>
 
+    <div class="input-row">
+      <input type="text" id="item-name-input" placeholder="Item name" autocomplete="off" />
+      <input type="number" id="item-price-input" placeholder="Price (₹)" min="0" step="0.01" autocomplete="off" />
+      <button id="add-btn">Add</button>
+    </div>
+    <div class="error-msg" id="error-msg"></div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Item</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody id="item-tbody">
+          <!-- rows injected by JS -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2" class="total-label">Grand Total</td>
+            <td class="total-value"><span data-ns-test="grandTotal">0</span></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="./script.js"></script>
 </body>
-
 </html>
